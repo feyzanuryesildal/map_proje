@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:map_proje/pages/status_list.dart';
 import 'package:map_proje/service/auth.dart';
 
 import 'login.dart';

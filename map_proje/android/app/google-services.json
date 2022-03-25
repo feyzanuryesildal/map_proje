@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "466567335210",
+    "firebase_url": "https://mapprojeyazlab-default-rtdb.firebaseio.com",
     "project_id": "mapprojeyazlab",
     "storage_bucket": "mapprojeyazlab.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "466567335210-5l8mol115s6jp16sg33hqiq8clfdd12f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.map_proje",
+            "certificate_hash": "4a3d4fd3f846c83ae8549f586561b69f1388bb49"
+          }
+        },
         {
           "client_id": "466567335210-sqttug1g2ub2k682ce8uag9lql1hos0t.apps.googleusercontent.com",
           "client_type": 3
