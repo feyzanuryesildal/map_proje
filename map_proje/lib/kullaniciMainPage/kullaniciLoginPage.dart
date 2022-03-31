@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:map_proje/pages/register.dart';
+import 'package:map_proje/kullaniciMainPage/kullaniciMainPage.dart';
 import 'package:map_proje/service/auth.dart';
+import 'package:map_proje/service/mapDurakMarker.dart';
 
-import '../menu.dart';
-import '../service/mapDurakMarker.dart';
+import 'kullaniciRegisterPage.dart';
 
-class LoginPage extends StatefulWidget {
+class kullaniciLoginPage extends StatefulWidget {
+  const kullaniciLoginPage({Key? key}) : super(key: key);
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _kullaniciLoginPageState createState() => _kullaniciLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _kullaniciLoginPageState extends State<kullaniciLoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -107,8 +109,10 @@ class _LoginPageState extends State<LoginPage> {
                           .signIn(
                               _emailController.text, _passwordController.text)
                           .then((value) {
-                        return Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => menu()));
+                        return Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => kullaniciMainPage()));
                       });
                     },
                     child: Container(
@@ -138,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterPage()));
+                              builder: (context) => kullaniciRegisterPage()));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

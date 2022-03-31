@@ -1,29 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class menu extends StatefulWidget {
-  const menu({Key? key}) : super(key: key);
+class kullaniciMapPage extends StatefulWidget {
+  const kullaniciMapPage({Key? key}) : super(key: key);
 
   @override
-  _menuState createState() => _menuState();
+  _kullaniciMapPageState createState() => _kullaniciMapPageState();
 }
 
-class _menuState extends State<menu> {
-  @override
-  Widget build(BuildContext context) {
-    return const MapScreen();
-  }
-}
-
-class MapScreen extends StatefulWidget {
-  const MapScreen({Key? key}) : super(key: key);
-
-  @override
-  _MapScreenState createState() => _MapScreenState();
-}
-
-class _MapScreenState extends State<MapScreen> {
+class _kullaniciMapPageState extends State<kullaniciMapPage> {
   static const _initialCameraPosition = CameraPosition(
     target: LatLng(40.778690, 29.909470),
     zoom: 11.5,
@@ -38,7 +23,6 @@ class _MapScreenState extends State<MapScreen> {
 
   bool _mapCreated = false;
   late GoogleMapController mapController;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

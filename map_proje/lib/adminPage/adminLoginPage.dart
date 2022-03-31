@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:map_proje/pages/register.dart';
-import 'package:map_proje/service/auth.dart';
+import 'package:map_proje/adminPage/adminMainPage.dart';
+import 'package:map_proje/service/auth_admin.dart';
+import 'package:map_proje/service/mapDurakMarker.dart';
 
-import '../menu.dart';
-import '../service/mapDurakMarker.dart';
+import 'adminRegisterPage.dart';
 
-class LoginPage extends StatefulWidget {
+class adminLoginPage extends StatefulWidget {
+  const adminLoginPage({Key? key}) : super(key: key);
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _adminLoginPageState createState() => _adminLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _adminLoginPageState extends State<adminLoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  AuthService _authService = AuthService();
+  AuthAdminService _authService = AuthAdminService();
 
   Duraklar duraklar = Duraklar();
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -107,8 +108,10 @@ class _LoginPageState extends State<LoginPage> {
                           .signIn(
                               _emailController.text, _passwordController.text)
                           .then((value) {
-                        return Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => menu()));
+                        return Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => adminMainPage()));
                       });
                     },
                     child: Container(
@@ -138,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterPage()));
+                              builder: (context) => adminRegisterPage()));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
