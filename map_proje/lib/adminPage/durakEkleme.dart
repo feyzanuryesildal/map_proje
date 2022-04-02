@@ -1,18 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:map_proje/service/mapDurakMarker.dart';
-import 'package:map_proje/service/yolcuEkleme_service.dart';
+import 'package:map_proje/service/status_service.dart';
 
-class yolcuEkleme extends StatefulWidget {
-  const yolcuEkleme({Key? key}) : super(key: key);
+class durakEkleme extends StatefulWidget {
+  late String title = "";
 
   @override
-  _yolcuEklemeState createState() => _yolcuEklemeState();
+  _durakEklemeState createState() => _durakEklemeState();
 }
 
-class _yolcuEklemeState extends State<yolcuEkleme> {
-  yolcuEklemeService _statusService = yolcuEklemeService();
+class _durakEklemeState extends State<durakEkleme> {
+  StatusService _statusService = StatusService();
   Duraklar duraklar = Duraklar();
   TextEditingController t1 = TextEditingController();
   TextEditingController t2 = TextEditingController();
@@ -21,6 +20,7 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(widget.title),
         centerTitle: true,
       ),
       body: Padding(
@@ -29,7 +29,7 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
           child: Column(
             children: [
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                     labelText: "Durak ismi",
                     hintText: "Durak ismi",
                     border: OutlineInputBorder(
@@ -40,24 +40,32 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
                 height: 10,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                    labelText: "Yolcu sayısı",
-                    hintText: "Yolcu sayısı",
+                decoration: InputDecoration(
+                    labelText: "enlem",
+                    hintText: "enlem",
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.blue))),
                 controller: t2,
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: "boylam",
+                    hintText: "boylam",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue))),
+                controller: t3,
               ),
               RaisedButton(
                   child: Text("Ekle"),
                   onPressed: () {
-                    _statusService.addStatus(t1.text, t2.text);
+                    _statusService.addStatus(t1.text, t2.text, t3.text);
                   }),
               Expanded(
                 child: StreamBuilder(
-                    stream: _statusService.getYolcuStatus(),
+                    stream: _statusService.getdurakStatus(),
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       return !snapshot.hasData
@@ -126,8 +134,6 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
                                                 Text(
                                                     "${mypost.data()["durakIsim"]}"),
                                                 Text(" "),
-                                                Text(
-                                                    "${mypost.data()["yolcuSayisi"]}"),
                                               ],
                                             ),
                                           ],
@@ -145,51 +151,5 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
         ),
       ),
     );
-  }
-}
-
-class streamBuilder extends StatefulWidget {
-  const streamBuilder({Key? key}) : super(key: key);
-
-  @override
-  _streamBuilderState createState() => _streamBuilderState();
-}
-
-class _streamBuilderState extends State<streamBuilder> {
-  yolcuEklemeService _statusService = yolcuEklemeService();
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-        stream: _statusService.getYolcuStatus(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          return !snapshot.hasData
-              ? CircularProgressIndicator()
-              : ListView.builder(
-                  itemCount: snapshot.data?.docs.length,
-                  itemBuilder: (context, index) {
-                    DocumentSnapshot mypost = snapshot.data!.docs[index];
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Text("${mypost["durakIsim: "]}"),
-                                    Text("${mypost["yolcuSayisi"]}"),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                );
-        });
   }
 }

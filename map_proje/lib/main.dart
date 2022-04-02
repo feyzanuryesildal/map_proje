@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:map_proje/adminPage/navigationBarMenu.dart';
 import 'package:map_proje/service/mapDurakMarker.dart';
 
-import 'adminPage/adminMainPage.dart';
 import 'kullaniciMainPage/kullaniciMainPage.dart';
 
 void main() async {
@@ -52,7 +52,7 @@ class _secimState extends State<secim> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => adminMainPage(),
+                    builder: (context) => navigationBarMenu(),
                   ),
                 );
               },
