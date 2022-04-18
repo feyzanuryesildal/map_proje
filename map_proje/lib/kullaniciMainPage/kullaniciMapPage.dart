@@ -26,7 +26,9 @@ class _kullaniciMapPageState extends State<kullaniciMapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: Stack(
         children: [
           GoogleMap(

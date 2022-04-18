@@ -19,7 +19,9 @@ class _kullaniciMainPageState extends State<kullaniciMainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,20 +39,28 @@ class _kullaniciMainPageState extends State<kullaniciMainPage> {
                       itemBuilder: (BuildContext context, int index) {
                         return Column(
                           children: [
-                            FlatButton(
-                                color: Colors.blueGrey,
-                                //padding: EdgeInsets.all(10),
-                                minWidth: MediaQuery.of(context).size.width * 1,
-                                onPressed: () {
-                                  var baslik = ilce[index]["DurakIsim"];
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            kullaniciMapPage(),
-                                      ));
-                                },
-                                child: Text(' ${ilce[index]["DurakIsim"]}')),
+                            Card(
+                              elevation: 10,
+                              shadowColor: Colors.blueAccent,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              color: Colors.white70,
+                              child: FlatButton(
+
+                                  //padding: EdgeInsets.all(10),
+                                  minWidth:
+                                      MediaQuery.of(context).size.width * 1,
+                                  onPressed: () {
+                                    var baslik = ilce[index]["DurakIsim"];
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              kullaniciMapPage(),
+                                        ));
+                                  },
+                                  child: Text(' ${ilce[index]["DurakIsim"]}')),
+                            ),
                             SizedBox(
                               height: 10,
                             ),

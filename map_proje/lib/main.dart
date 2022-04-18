@@ -1,12 +1,14 @@
 import 'dart:convert';
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:map_proje/adminPage/navigationBarMenu.dart';
+import 'package:lottie/lottie.dart';
+import 'package:map_proje/kullaniciMainPage/kullaniciLoginPage.dart';
 import 'package:map_proje/service/mapDurakMarker.dart';
 
-import 'kullaniciMainPage/kullaniciMainPage.dart';
+import 'adminPage/adminLoginPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,10 +23,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        brightness: Brightness.light,
+        primaryColor: Colors.deepPurpleAccent[400],
+        accentColor: Colors.deepPurpleAccent[400],
       ),
-      home: secim(),
+      home: AnimatedSplashScreen(
+        splash: Lottie.network(
+            'https://assets3.lottiefiles.com/packages/lf20_nxzfykro.json'),
+        nextScreen: secim(),
+        splashTransition: SplashTransition.scaleTransition,
+        duration: 3000,
+        splashIconSize: 200,
+      ),
     );
   }
 }
@@ -40,24 +50,29 @@ class _secimState extends State<secim> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            SizedBox(
+              height: 100,
+            ),
             FlatButton(
               minWidth: MediaQuery.of(context).size.width * 0.5,
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => navigationBarMenu(),
+                    builder: (context) => adminLoginPage(),
                   ),
                 );
               },
-              child: Text("Admin Girişi"),
-              color: Colors.blueAccent,
+              child: Text(
+                "Admin",
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.deepPurpleAccent[400],
             ),
             FlatButton(
               minWidth: MediaQuery.of(context).size.width * 0.5,
@@ -65,12 +80,20 @@ class _secimState extends State<secim> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => kullaniciMainPage(),
+                      builder: (context) => kullaniciLoginPage(),
                     ));
               },
-              child: Text("Kullanıcı Girişi"),
-              color: Colors.blueAccent,
+              child: Text(
+                "Kullanıcı",
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.deepPurpleAccent[400],
             ),
+            SizedBox(
+              height: 100,
+            ),
+            Lottie.network(
+                'https://assets5.lottiefiles.com/packages/lf20_WAMQ5G.json')
           ],
         ),
       ),

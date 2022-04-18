@@ -21,7 +21,7 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        backgroundColor: Colors.transparent,
       ),
       body: Padding(
         padding: EdgeInsets.all(8),
@@ -29,11 +29,11 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
           child: Column(
             children: [
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                     labelText: "Durak ismi",
                     hintText: "Durak ismi",
                     border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue))),
+                        borderSide: BorderSide(color: Colors.deepPurple))),
                 controller: t1,
               ),
               SizedBox(
@@ -51,7 +51,11 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
                 height: 10,
               ),
               RaisedButton(
-                  child: Text("Ekle"),
+                  color: Colors.deepPurpleAccent[400],
+                  child: Text(
+                    "Ekle",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   onPressed: () {
                     _statusService.addStatus(t1.text, t2.text);
                   }),
@@ -113,24 +117,32 @@ class _yolcuEklemeState extends State<yolcuEkleme> {
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         border: Border.all(
-                                            color: Colors.black45, width: 2),
+                                            color: Colors.white, width: 2),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(10)),
                                       ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text(
-                                                    "${mypost.data()["durakIsim"]}"),
-                                                Text(" "),
-                                                Text(
-                                                    "${mypost.data()["yolcuSayisi"]}"),
-                                              ],
-                                            ),
-                                          ],
+                                      child: Card(
+                                        elevation: 10,
+                                        shadowColor: Colors.blueAccent,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        color: Colors.white70,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                      "${mypost.data()["durakIsim"]}"),
+                                                  Text(" "),
+                                                  Text(
+                                                      "${mypost.data()["yolcuSayisi"]}"),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),

@@ -20,8 +20,7 @@ class _durakEklemeState extends State<durakEkleme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-        centerTitle: true,
+        backgroundColor: Colors.transparent,
       ),
       body: Padding(
         padding: EdgeInsets.all(8),
@@ -59,7 +58,11 @@ class _durakEklemeState extends State<durakEkleme> {
                 controller: t3,
               ),
               RaisedButton(
-                  child: Text("Ekle"),
+                  color: Colors.deepPurpleAccent[400],
+                  child: Text(
+                    "Ekle",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   onPressed: () {
                     _statusService.addStatus(t1.text, t2.text, t3.text);
                   }),
@@ -121,22 +124,30 @@ class _durakEklemeState extends State<durakEkleme> {
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         border: Border.all(
-                                            color: Colors.black45, width: 2),
+                                            color: Colors.white, width: 2),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(10)),
                                       ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text(
-                                                    "${mypost.data()["durakIsim"]}"),
-                                                Text(" "),
-                                              ],
-                                            ),
-                                          ],
+                                      child: Card(
+                                        elevation: 10,
+                                        shadowColor: Colors.blueAccent,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        color: Colors.white70,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                      "${mypost.data()["durakIsim"]}"),
+                                                  Text(" "),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),

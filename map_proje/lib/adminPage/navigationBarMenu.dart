@@ -13,10 +13,10 @@ class navigationBarMenu extends StatefulWidget {
 
 final screens = [
   yolcuEkleme(),
-  durakEkleme(),
   adminMainPage(),
+  durakEkleme(),
 ];
-int clickItem = 0;
+int clickItem = 1;
 
 class _navigationBarMenuState extends State<navigationBarMenu> {
   @override
@@ -25,21 +25,23 @@ class _navigationBarMenuState extends State<navigationBarMenu> {
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.transparent,
-          selectedItemColor: Colors.blueAccent,
+          selectedItemColor: Colors.deepPurpleAccent[400],
           unselectedItemColor: Colors.blueGrey,
           currentIndex: clickItem,
           elevation: 0,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.add_box,
-                  size: 30,
+                  Icons.add,
+                  size: clickItem == 0 ? 35 : 25,
                 ),
                 label: "Yolcu Ekle"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add_box, size: 30), label: "Durak Ekle"),
+                icon: Icon(Icons.car_repair, size: clickItem == 1 ? 35 : 25),
+                label: "Seferler"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add_box, size: 30), label: "Seferleri Gör"),
+                icon: Icon(Icons.add, size: clickItem == 2 ? 35 : 25),
+                label: "Durak Ekle"),
           ],
           onTap: (index) => setState(() {
                 clickItem = index;

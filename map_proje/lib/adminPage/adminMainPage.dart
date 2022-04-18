@@ -24,27 +24,35 @@ class _adminMainPageState extends State<adminMainPage> {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 10,
+          ),
           Card(
             elevation: 10,
             shadowColor: Colors.blueAccent,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            color: Colors.redAccent,
+            color: Colors.white70,
             child: ListTile(
               trailing: Icon(Icons.car_repair),
-              title: Text("Hat 1"),
+              title: Text(
+                "Hat 1",
+                style: TextStyle(color: Colors.black),
+              ),
               subtitle: Column(
                 children: [
                   Row(
                     children: const [
-                      Text("Araç kapasitesi: "),
-                      Text("25"),
+                      Text("Araç kapasitesi: ",
+                          style: TextStyle(color: Colors.black54)),
+                      Text("25", style: TextStyle(color: Colors.black54)),
                     ],
                   ),
                   Row(
                     children: const [
-                      Text("Yolcu sayısı: "),
-                      Text("0"),
+                      Text("Yolcu sayısı: ",
+                          style: TextStyle(color: Colors.black54)),
+                      Text("0", style: TextStyle(color: Colors.black54)),
                     ],
                   ),
                 ],
@@ -54,24 +62,39 @@ class _adminMainPageState extends State<adminMainPage> {
           Card(
             elevation: 10,
             shadowColor: Colors.blueAccent,
-            color: Colors.orangeAccent,
+            color: Colors.white70,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: ListTile(
               trailing: Icon(Icons.car_repair),
-              title: Text("Hat 2"),
+              title: Text(
+                "Hat 2",
+                style: TextStyle(color: Colors.black),
+              ),
               subtitle: Column(
                 children: [
                   Row(
                     children: const [
-                      Text("Araç kapasitesi: "),
-                      Text("30"),
+                      Text(
+                        "Araç kapasitesi: ",
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                      Text(
+                        "30",
+                        style: TextStyle(color: Colors.black54),
+                      ),
                     ],
                   ),
                   Row(
                     children: const [
-                      Text("Yolcu sayısı: "),
-                      Text("0"),
+                      Text(
+                        "Yolcu sayısı: ",
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                      Text(
+                        "0",
+                        style: TextStyle(color: Colors.black54),
+                      ),
                     ],
                   ),
                 ],
@@ -81,24 +104,39 @@ class _adminMainPageState extends State<adminMainPage> {
           Card(
             elevation: 10,
             shadowColor: Colors.blueAccent,
-            color: Colors.green,
+            color: Colors.white70,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: ListTile(
               trailing: Icon(Icons.car_repair),
-              title: Text("Hat 3"),
+              title: Text(
+                "Hat 3",
+                style: TextStyle(color: Colors.black),
+              ),
               subtitle: Column(
                 children: [
                   Row(
                     children: const [
-                      Text("Araç kapasitesi: "),
-                      Text("40"),
+                      Text(
+                        "Araç kapasitesi: ",
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                      Text(
+                        "40",
+                        style: TextStyle(color: Colors.black54),
+                      ),
                     ],
                   ),
                   Row(
                     children: const [
-                      Text("Yolcu sayısı: "),
-                      Text("0"),
+                      Text(
+                        "Yolcu sayısı: ",
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                      Text(
+                        "0",
+                        style: TextStyle(color: Colors.black54),
+                      ),
                     ],
                   ),
                 ],
